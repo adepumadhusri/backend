@@ -18,3 +18,8 @@ POST /users                         controllers.UserController.registerUser()
 PUT /users/signin                   controllers.UserController.signInUser()
 PUT /users/signout                  controllers.UserController.signOutUser()
 DELETE /users/:name                 controllers.UserController.deleteUserByName(name : String)
+
+
+
+POST /createcard                     controllers.CardController.createCard()
+GET /allcards                        controllers.CardController.getAllCards()

@@ -29,7 +29,8 @@ public class Module extends AbstractModule {
         // Set AtomicCounter as the implementation for Counter.
         bind(Counter.class).to(AtomicCounter.class);
 
-        bind(UserDao.class).to(UserDaoImpl.class);
+       bind(UserDao.class).to(UserDaoImpl.class);
+        bind(CardDao.class).to(CardDaoImpl.class);
 
     }
 

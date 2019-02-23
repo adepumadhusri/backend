@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
-// @DATE:Thu Feb 21 11:42:28 IST 2019
+// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
+// @DATE:Sat Feb 23 15:02:38 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -155,6 +155,36 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "message"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:24
+  class ReverseCardController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:24
+    def createCard: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CardController.createCard",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "createcard"})
+        }
+      """
+    )
+  
+    // @LINE:25
+    def getAllCards: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CardController.getAllCards",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "allcards"})
         }
       """
     )

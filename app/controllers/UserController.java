@@ -191,7 +191,7 @@ public class UserController extends Controller {
 
 
 
-  //  private String generateAccessToken() {
+    //  private String generateAccessToken() {
 
     //    return "ABC123";
 
@@ -199,84 +199,84 @@ public class UserController extends Controller {
 //        System.out.println(authToken);
 //        return authToken;
 
-        private String generateAccessToken() {
+    private String generateAccessToken() {
 
-            String authToken = RandomStringUtils.randomAlphabetic(10);
-            return authToken;
+        String authToken = RandomStringUtils.randomAlphabetic(10);
+        return authToken;
+    }
+
+
+
+    //  @Authenticator
+    @Transactional
+    public Result signOutUser() {
+
+        final User user = (User) ctx().args.get("user");
+
+        user.setAccessToken(null);
+
+        userDao.update(user);
+
+        return ok();
+    }
+
+    @Transactional
+    public Result getCurrentUser() {
+
+        final Optional<String> authHeader = request().header("Authorization");
+
+        if (!authHeader.isPresent()) {
+            return unauthorized("Go and sign in");
         }
 
+        LOGGER.debug("Auth token = {}", authHeader.get());
 
-
-      //  @Authenticator
-        @Transactional
-        public Result signOutUser() {
-
-            final User user = (User) ctx().args.get("user");
-
-            user.setAccessToken(null);
-
-            userDao.update(user);
-
-            return ok();
+        if (!authHeader.get().startsWith("Bearer ")) {
+            return unauthorized("Invalid auth header format");
         }
 
-        @Transactional
-        public Result getCurrentUser() {
-
-            final Optional<String> authHeader = request().header("Authorization");
-
-            if (!authHeader.isPresent()) {
-                return unauthorized("Go and sign in");
-            }
-
-            LOGGER.debug("Auth token = {}", authHeader.get());
-
-            if (!authHeader.get().startsWith("Bearer ")) {
-                return unauthorized("Invalid auth header format");
-            }
-
-            final String accessToken = authHeader.get().substring(7);
-            LOGGER.debug("accessToken {}", accessToken);
-            if (accessToken.isEmpty()) {
-                return unauthorized("Invalid auth header format");
-            }
-
-            User user = userDao.findUserByAuthToken(accessToken);
-            if (null == user) {
-                return unauthorized("User not found");
-            }
-
-            LOGGER.debug("found user");
-
-            final JsonNode result = Json.toJson(user);
-            return ok(result);
+        final String accessToken = authHeader.get().substring(7);
+        LOGGER.debug("accessToken {}", accessToken);
+        if (accessToken.isEmpty()) {
+            return unauthorized("Invalid auth header format");
         }
 
-
-          //  @Authenticator
-
-
-            @Transactional
-
-            public Result deleteUserByName (String name){
-                if (null == name) {
-                    return badRequest("Name must be provided");
-                }
-
-                final User user = userDao.delete(name);
-
-
-                final JsonNode result = Json.toJson(user);
-                return ok(result);
-            }
-
-            @Transactional
-            public Result getAllUsers () {
-
-                Collection<User> users = userDao.all();
-
-                final JsonNode result = Json.toJson(users);
-
-                return ok(result);
-            }
+        User user = userDao.findUserByAuthToken(accessToken);
+        if (null == user) {
+            return unauthorized("User not found");
         }
+
+        LOGGER.debug("found user");
+
+        final JsonNode result = Json.toJson(user);
+        return ok(result);
+    }
+
+
+    //  @Authenticator
+
+
+    @Transactional
+
+    public Result deleteUserByName (String name){
+        if (null == name) {
+            return badRequest("Name must be provided");
+        }
+
+        final User user = userDao.delete(name);
+
+
+        final JsonNode result = Json.toJson(user);
+        return ok(result);
+    }
+
+    @Transactional
+    public Result getAllUsers () {
+
+        Collection<User> users = userDao.all();
+
+        final JsonNode result = Json.toJson(users);
+
+        return ok(result);
+    }
+}
