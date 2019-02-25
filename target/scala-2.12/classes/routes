@@ -14,12 +14,12 @@ GET     /message                    controllers.AsyncController.message
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET /users                          controllers.UserController.getAllUsers()
 GET /users/me                       controllers.UserController.getCurrentUser()
-POST /users                         controllers.UserController.registerUser()
-PUT /users/signin                   controllers.UserController.signInUser()
-PUT /users/signout                  controllers.UserController.signOutUser()
+POST /register                        controllers.UserController.registerUser()
+PUT /login                   controllers.UserController.signInUser()
+PUT /logout                  controllers.UserController.signOutUser()
 DELETE /users/:name                 controllers.UserController.deleteUserByName(name : String)
 
 
 
 POST /createcard                     controllers.CardController.createCard()
-GET /allcards                        controllers.CardController.getAllCards()
+GET /allnews                        controllers.CardController.getAllCards()

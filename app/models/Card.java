@@ -68,6 +68,7 @@ public class Card {
     }
 
     public void setInfo(String info) {
+
         Info = info;
     }
 

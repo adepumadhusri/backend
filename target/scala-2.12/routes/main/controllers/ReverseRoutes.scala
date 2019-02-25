@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Sat Feb 23 15:02:38 IST 2019
+// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
+// @DATE:Mon Feb 25 14:36:35 IST 2019
 
 import play.api.mvc.Call
 
@@ -63,19 +63,19 @@ package controllers {
     // @LINE:18
     def signInUser(): Call = {
       
-      Call("PUT", _prefix + { _defaultPrefix } + "users/signin")
+      Call("PUT", _prefix + { _defaultPrefix } + "login")
     }
   
     // @LINE:17
     def registerUser(): Call = {
       
-      Call("POST", _prefix + { _defaultPrefix } + "users")
+      Call("POST", _prefix + { _defaultPrefix } + "register")
     }
   
     // @LINE:19
     def signOutUser(): Call = {
       
-      Call("PUT", _prefix + { _defaultPrefix } + "users/signout")
+      Call("PUT", _prefix + { _defaultPrefix } + "logout")
     }
   
     // @LINE:15
@@ -132,7 +132,7 @@ package controllers {
     // @LINE:25
     def getAllCards(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "allcards")
+      Call("GET", _prefix + { _defaultPrefix } + "allnews")
     }
   
   }

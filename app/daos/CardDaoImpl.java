@@ -35,7 +35,7 @@ public class CardDaoImpl implements CardDao{
 
     @Override
     public Collection<Card> all() {
-        TypedQuery<Card> query = jpaApi.em().createQuery("SELECT c FROM Restaurant c", Card .class);
+        TypedQuery<Card> query = jpaApi.em().createQuery("SELECT  c FROM  Card c ORDER BY id desc ", Card .class);
         List<Card> cards= query.getResultList();
 
         return cards;
@@ -45,7 +45,7 @@ public class CardDaoImpl implements CardDao{
 
     @Override
     public Collection<Card> findCardByName(String name) {
-        TypedQuery<Card> query = jpaApi.em().createQuery("SELECT c FROM Restaurant c where Address LIKE '%"+name+"%'", Card.class);
+        TypedQuery<Card> query = jpaApi.em().createQuery("SELECT c FROM Card c where Name LIKE '%"+name+"%'", Card.class);
         List<Card> card= query.getResultList();
 
         return card;

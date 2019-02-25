@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Sat Feb 23 15:02:38 IST 2019
+// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
+// @DATE:Mon Feb 25 14:36:35 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -84,7 +84,7 @@ package controllers.javascript {
       "controllers.UserController.signInUser",
       """
         function() {
-          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "users/signin"})
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
         }
       """
     )
@@ -94,7 +94,7 @@ package controllers.javascript {
       "controllers.UserController.registerUser",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "users"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "register"})
         }
       """
     )
@@ -104,7 +104,7 @@ package controllers.javascript {
       "controllers.UserController.signOutUser",
       """
         function() {
-          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "users/signout"})
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "logout"})
         }
       """
     )
@@ -184,7 +184,7 @@ package controllers.javascript {
       "controllers.CardController.getAllCards",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "allcards"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "allnews"})
         }
       """
     )
