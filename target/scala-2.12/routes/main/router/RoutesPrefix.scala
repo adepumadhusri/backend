@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Sat Feb 23 15:02:38 IST 2019
+// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
+// @DATE:Mon Feb 25 14:36:35 IST 2019
 
 
 package router {

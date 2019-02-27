@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Sat Feb 23 15:02:38 IST 2019
+// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
+// @DATE:Mon Feb 25 14:36:35 IST 2019
 
 package router
 
@@ -61,12 +61,12 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users""", """controllers.UserController.getAllUsers()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/me""", """controllers.UserController.getCurrentUser()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users""", """controllers.UserController.registerUser()"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/signin""", """controllers.UserController.signInUser()"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/signout""", """controllers.UserController.signOutUser()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """register""", """controllers.UserController.registerUser()"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.UserController.signInUser()"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """logout""", """controllers.UserController.signOutUser()"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/""" + "$" + """name<[^/]+>""", """controllers.UserController.deleteUserByName(name:String)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createcard""", """controllers.CardController.createCard()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """allcards""", """controllers.CardController.getAllCards()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """allnews""", """controllers.CardController.getAllCards()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -184,7 +184,7 @@ class Routes(
 
   // @LINE:17
   private[this] lazy val controllers_UserController_registerUser6_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("register")))
   )
   private[this] lazy val controllers_UserController_registerUser6_invoker = createInvoker(
     UserController_4.registerUser(),
@@ -194,7 +194,7 @@ class Routes(
       "registerUser",
       Nil,
       "POST",
-      this.prefix + """users""",
+      this.prefix + """register""",
       """""",
       Seq()
     )
@@ -202,7 +202,7 @@ class Routes(
 
   // @LINE:18
   private[this] lazy val controllers_UserController_signInUser7_route = Route("PUT",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users/signin")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("login")))
   )
   private[this] lazy val controllers_UserController_signInUser7_invoker = createInvoker(
     UserController_4.signInUser(),
@@ -212,7 +212,7 @@ class Routes(
       "signInUser",
       Nil,
       "PUT",
-      this.prefix + """users/signin""",
+      this.prefix + """login""",
       """""",
       Seq()
     )
@@ -220,7 +220,7 @@ class Routes(
 
   // @LINE:19
   private[this] lazy val controllers_UserController_signOutUser8_route = Route("PUT",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users/signout")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("logout")))
   )
   private[this] lazy val controllers_UserController_signOutUser8_invoker = createInvoker(
     UserController_4.signOutUser(),
@@ -230,7 +230,7 @@ class Routes(
       "signOutUser",
       Nil,
       "PUT",
-      this.prefix + """users/signout""",
+      this.prefix + """logout""",
       """""",
       Seq()
     )
@@ -274,7 +274,7 @@ class Routes(
 
   // @LINE:25
   private[this] lazy val controllers_CardController_getAllCards11_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("allcards")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("allnews")))
   )
   private[this] lazy val controllers_CardController_getAllCards11_invoker = createInvoker(
     CardController_1.getAllCards(),
@@ -284,7 +284,7 @@ class Routes(
       "getAllCards",
       Nil,
       "GET",
-      this.prefix + """allcards""",
+      this.prefix + """allnews""",
       """""",
       Seq()
     )
