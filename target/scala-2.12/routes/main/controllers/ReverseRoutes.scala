@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
-// @DATE:Mon Feb 25 14:36:35 IST 2019
+// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
+// @DATE:Thu Feb 28 12:16:15 IST 2019
 
 import play.api.mvc.Call
 
@@ -22,6 +22,27 @@ package controllers {
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
+    }
+  
+  }
+
+  // @LINE:27
+  class ReverseRegisCrimeController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:28
+    def getAllNews(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "newsFeed")
+    }
+  
+    // @LINE:27
+    def registerCrime(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "registerCrime")
     }
   
   }

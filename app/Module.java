@@ -30,7 +30,8 @@ public class Module extends AbstractModule {
         bind(Counter.class).to(AtomicCounter.class);
 
        bind(UserDao.class).to(UserDaoImpl.class);
-        bind(CardDao.class).to(CardDaoImpl.class);
+       bind(CardDao.class).to(CardDaoImpl.class);
+       bind(RegisterCrimeDao.class).to(RegisterCrimeDaoImpl.class);
 
     }
 

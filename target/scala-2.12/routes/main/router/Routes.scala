@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
-// @DATE:Mon Feb 25 14:36:35 IST 2019
+// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
+// @DATE:Thu Feb 28 12:16:15 IST 2019
 
 package router
 
@@ -21,11 +21,13 @@ class Routes(
   // @LINE:10
   AsyncController_3: controllers.AsyncController,
   // @LINE:14
-  Assets_5: controllers.Assets,
+  Assets_6: controllers.Assets,
   // @LINE:15
   UserController_4: controllers.UserController,
   // @LINE:24
   CardController_1: controllers.CardController,
+  // @LINE:27
+  RegisCrimeController_5: controllers.RegisCrimeController,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -38,16 +40,18 @@ class Routes(
     // @LINE:10
     AsyncController_3: controllers.AsyncController,
     // @LINE:14
-    Assets_5: controllers.Assets,
+    Assets_6: controllers.Assets,
     // @LINE:15
     UserController_4: controllers.UserController,
     // @LINE:24
-    CardController_1: controllers.CardController
-  ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_5, UserController_4, CardController_1, "/")
+    CardController_1: controllers.CardController,
+    // @LINE:27
+    RegisCrimeController_5: controllers.RegisCrimeController
+  ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_5, UserController_4, CardController_1, prefix)
+    new Routes(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -67,6 +71,8 @@ class Routes(
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/""" + "$" + """name<[^/]+>""", """controllers.UserController.deleteUserByName(name:String)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createcard""", """controllers.CardController.createCard()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """allnews""", """controllers.CardController.getAllCards()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """registerCrime""", """controllers.RegisCrimeController.registerCrime()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """newsFeed""", """controllers.RegisCrimeController.getAllNews()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -133,7 +139,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
   private[this] lazy val controllers_Assets_versioned3_invoker = createInvoker(
-    Assets_5.versioned(fakeValue[String], fakeValue[Asset]),
+    Assets_6.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -290,6 +296,42 @@ class Routes(
     )
   )
 
+  // @LINE:27
+  private[this] lazy val controllers_RegisCrimeController_registerCrime12_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("registerCrime")))
+  )
+  private[this] lazy val controllers_RegisCrimeController_registerCrime12_invoker = createInvoker(
+    RegisCrimeController_5.registerCrime(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.RegisCrimeController",
+      "registerCrime",
+      Nil,
+      "POST",
+      this.prefix + """registerCrime""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:28
+  private[this] lazy val controllers_RegisCrimeController_getAllNews13_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("newsFeed")))
+  )
+  private[this] lazy val controllers_RegisCrimeController_getAllNews13_invoker = createInvoker(
+    RegisCrimeController_5.getAllNews(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.RegisCrimeController",
+      "getAllNews",
+      Nil,
+      "GET",
+      this.prefix + """newsFeed""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -314,7 +356,7 @@ class Routes(
     // @LINE:14
     case controllers_Assets_versioned3_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned3_invoker.call(Assets_5.versioned(path, file))
+        controllers_Assets_versioned3_invoker.call(Assets_6.versioned(path, file))
       }
   
     // @LINE:15
@@ -363,6 +405,18 @@ class Routes(
     case controllers_CardController_getAllCards11_route(params@_) =>
       call { 
         controllers_CardController_getAllCards11_invoker.call(CardController_1.getAllCards())
+      }
+  
+    // @LINE:27
+    case controllers_RegisCrimeController_registerCrime12_route(params@_) =>
+      call { 
+        controllers_RegisCrimeController_registerCrime12_invoker.call(RegisCrimeController_5.registerCrime())
+      }
+  
+    // @LINE:28
+    case controllers_RegisCrimeController_getAllNews13_route(params@_) =>
+      call { 
+        controllers_RegisCrimeController_getAllNews13_invoker.call(RegisCrimeController_5.getAllNews())
       }
   }
 }

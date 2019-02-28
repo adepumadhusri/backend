@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
-// @DATE:Mon Feb 25 14:36:35 IST 2019
+// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
+// @DATE:Thu Feb 28 12:16:15 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -25,6 +25,36 @@ package controllers.javascript {
       """
         function(file1) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:27
+  class ReverseRegisCrimeController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:28
+    def getAllNews: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.RegisCrimeController.getAllNews",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "newsFeed"})
+        }
+      """
+    )
+  
+    // @LINE:27
+    def registerCrime: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.RegisCrimeController.registerCrime",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "registerCrime"})
         }
       """
     )

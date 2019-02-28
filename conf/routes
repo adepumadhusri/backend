@@ -23,3 +23,6 @@ DELETE /users/:name                 controllers.UserController.deleteUserByName(
 
 POST /createcard                     controllers.CardController.createCard()
 GET /allnews                        controllers.CardController.getAllCards()
+
+POST /registerCrime                     controllers.RegisCrimeController.registerCrime()
+GET /newsFeed                        controllers.RegisCrimeController.getAllNews()
