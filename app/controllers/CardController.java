@@ -70,7 +70,7 @@ public class CardController extends Controller {
     public Result getAllCards() {
 
         Collection<Card> card = CardDao.all();
-
+        //Collection<Card> card2 = CardDao.all10();
         final JsonNode result = Json.toJson(card);
 
         return ok(result);

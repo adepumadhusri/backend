@@ -57,6 +57,14 @@ public class RegisterCrimeDaoImpl implements RegisterCrimeDao{
         return cards;
     }
 
+    @Override
+    public Collection<RegisterCrime> all10() {
+        TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT  c FROM  RegisterCrime c ORDER BY id desc ", RegisterCrime .class);
+        query.setMaxResults(5);
+        List<RegisterCrime> cards= query.getResultList();
+
+        return cards;
+    }
 
 
 }

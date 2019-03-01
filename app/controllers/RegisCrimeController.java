@@ -62,6 +62,19 @@ public class RegisCrimeController extends Controller {
         final JsonNode result = Json.toJson(crime);
 
         return ok(result);
+
+
     }
 
+    @Transactional
+    public Result getAll10() {
+
+        Collection<RegisterCrime> crime = RegisterCrimeDao.all10();
+
+        final JsonNode result = Json.toJson(crime);
+
+        return ok(result);
+
+
+    }
 }

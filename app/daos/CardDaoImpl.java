@@ -41,6 +41,10 @@ public class CardDaoImpl implements CardDao{
         return cards;
     }
 
+    @Override
+    public Collection<Card> all10() {
+        return null;
+    }
 
 
     @Override
@@ -50,4 +54,6 @@ public class CardDaoImpl implements CardDao{
 
         return card;
     }
+
+
 }

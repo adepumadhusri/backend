@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Fri Mar 01 10:35:04 IST 2019
+// @DATE:Fri Mar 01 11:56:20 IST 2019
 
 package router
 
@@ -28,7 +28,7 @@ class Routes(
   CardController_1: controllers.CardController,
   // @LINE:27
   RegisCrimeController_5: controllers.RegisCrimeController,
-  // @LINE:30
+  // @LINE:31
   ImagesController_7: controllers.ImagesController,
   val prefix: String
 ) extends GeneratedRouter {
@@ -49,7 +49,7 @@ class Routes(
     CardController_1: controllers.CardController,
     // @LINE:27
     RegisCrimeController_5: controllers.RegisCrimeController,
-    // @LINE:30
+    // @LINE:31
     ImagesController_7: controllers.ImagesController
   ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, ImagesController_7, "/")
 
@@ -77,6 +77,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """allnews""", """controllers.CardController.getAllCards()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """registerCrime""", """controllers.RegisCrimeController.registerCrime()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """newsFeed""", """controllers.RegisCrimeController.getAllNews()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """viewmorebutton""", """controllers.RegisCrimeController.getAll10()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.uploadImage()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.downloadImage(id:String)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.deleteImage(id:String)"""),
@@ -339,11 +340,29 @@ class Routes(
     )
   )
 
-  // @LINE:30
-  private[this] lazy val controllers_ImagesController_uploadImage14_route = Route("POST",
+  // @LINE:29
+  private[this] lazy val controllers_RegisCrimeController_getAll1014_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("viewmorebutton")))
+  )
+  private[this] lazy val controllers_RegisCrimeController_getAll1014_invoker = createInvoker(
+    RegisCrimeController_5.getAll10(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.RegisCrimeController",
+      "getAll10",
+      Nil,
+      "GET",
+      this.prefix + """viewmorebutton""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:31
+  private[this] lazy val controllers_ImagesController_uploadImage15_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images")))
   )
-  private[this] lazy val controllers_ImagesController_uploadImage14_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_uploadImage15_invoker = createInvoker(
     ImagesController_7.uploadImage(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -357,11 +376,11 @@ class Routes(
     )
   )
 
-  // @LINE:31
-  private[this] lazy val controllers_ImagesController_downloadImage15_route = Route("GET",
+  // @LINE:32
+  private[this] lazy val controllers_ImagesController_downloadImage16_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ImagesController_downloadImage15_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_downloadImage16_invoker = createInvoker(
     ImagesController_7.downloadImage(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -375,11 +394,11 @@ class Routes(
     )
   )
 
-  // @LINE:32
-  private[this] lazy val controllers_ImagesController_deleteImage16_route = Route("DELETE",
+  // @LINE:33
+  private[this] lazy val controllers_ImagesController_deleteImage17_route = Route("DELETE",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ImagesController_deleteImage16_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_deleteImage17_invoker = createInvoker(
     ImagesController_7.deleteImage(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -480,22 +499,28 @@ class Routes(
         controllers_RegisCrimeController_getAllNews13_invoker.call(RegisCrimeController_5.getAllNews())
       }
   
-    // @LINE:30
-    case controllers_ImagesController_uploadImage14_route(params@_) =>
+    // @LINE:29
+    case controllers_RegisCrimeController_getAll1014_route(params@_) =>
       call { 
-        controllers_ImagesController_uploadImage14_invoker.call(ImagesController_7.uploadImage())
+        controllers_RegisCrimeController_getAll1014_invoker.call(RegisCrimeController_5.getAll10())
       }
   
     // @LINE:31
-    case controllers_ImagesController_downloadImage15_route(params@_) =>
-      call(params.fromPath[String]("id", None)) { (id) =>
-        controllers_ImagesController_downloadImage15_invoker.call(ImagesController_7.downloadImage(id))
+    case controllers_ImagesController_uploadImage15_route(params@_) =>
+      call { 
+        controllers_ImagesController_uploadImage15_invoker.call(ImagesController_7.uploadImage())
       }
   
     // @LINE:32
-    case controllers_ImagesController_deleteImage16_route(params@_) =>
+    case controllers_ImagesController_downloadImage16_route(params@_) =>
       call(params.fromPath[String]("id", None)) { (id) =>
-        controllers_ImagesController_deleteImage16_invoker.call(ImagesController_7.deleteImage(id))
+        controllers_ImagesController_downloadImage16_invoker.call(ImagesController_7.downloadImage(id))
+      }
+  
+    // @LINE:33
+    case controllers_ImagesController_deleteImage17_route(params@_) =>
+      call(params.fromPath[String]("id", None)) { (id) =>
+        controllers_ImagesController_deleteImage17_invoker.call(ImagesController_7.deleteImage(id))
       }
   }
 }

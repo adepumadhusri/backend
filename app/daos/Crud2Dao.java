@@ -8,6 +8,7 @@ public interface Crud2Dao<Entity ,Key> {
     // Entity update(Entity entity);
     // Entity delete(Key id);
     Collection<Entity> all();
+    Collection<Entity> all10();
 
 }
 

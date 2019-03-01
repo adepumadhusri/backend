@@ -26,6 +26,7 @@ GET /allnews                        controllers.CardController.getAllCards()
 
 POST /registerCrime                     controllers.RegisCrimeController.registerCrime()
 GET /newsFeed                        controllers.RegisCrimeController.getAllNews()
+GET /viewmorebutton                        controllers.RegisCrimeController.getAll10()
 
 POST /images             controllers.ImagesController.uploadImage()
 GET /images/:id          controllers.ImagesController.downloadImage(id: String)
