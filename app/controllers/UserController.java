@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.io.BaseEncoding;
 import com.google.inject.Inject;
 //import controllers.security.Authenticator;
+
 import daos.UserDao;
 import models.User;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,10 +16,15 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.lang.String;
+
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.Random;
+
 
 
 
@@ -201,23 +207,57 @@ public class UserController extends Controller {
 
     private String generateAccessToken() {
 
-        String authToken = RandomStringUtils.randomAlphabetic(10);
-        return authToken;
+        // TODO Generate a random string of 20 (or more characters)
+       // String authToken = RandomStringUtils.randomAlphabetic(10);
+        //return authToken;
+
+        String Token = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder at = new StringBuilder();
+        Random rnd = new Random();
+        while (at.length() < 8) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * Token.length());
+            at.append(Token.charAt(index));
+        }
+        String AccessToken = at.toString();
+        return AccessToken;
+
+
     }
 
 
 
     //  @Authenticator
     @Transactional
-    public Result signOutUser() {
+    public Result signOutUser(String Token) {
 
-        final User user = (User) ctx().args.get("user");
+
+        if (null ==  Token) {
+
+            return badRequest("Missing mandatory parameters");
+        }
+
+
+        final User user = userDao.findUserByAuthToken(Token);
+        Logger.debug("user is present");
+
+        if (null == user) {
+            return unauthorized("Wrong username");
+        }
+        Logger.debug("user is  not  present");
 
         user.setAccessToken(null);
 
         userDao.update(user);
 
         return ok();
+
+       /* final User user = (User) ctx().args.get("user");
+
+        user.setAccessToken(null);
+
+        userDao.update(user);
+
+        return ok();*/
     }
 
     @Transactional

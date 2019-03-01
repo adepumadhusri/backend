@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
-// @DATE:Thu Feb 28 12:16:15 IST 2019
+// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
+// @DATE:Fri Mar 01 10:35:04 IST 2019
 
 package router
 
@@ -28,6 +28,8 @@ class Routes(
   CardController_1: controllers.CardController,
   // @LINE:27
   RegisCrimeController_5: controllers.RegisCrimeController,
+  // @LINE:30
+  ImagesController_7: controllers.ImagesController,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -46,12 +48,14 @@ class Routes(
     // @LINE:24
     CardController_1: controllers.CardController,
     // @LINE:27
-    RegisCrimeController_5: controllers.RegisCrimeController
-  ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, "/")
+    RegisCrimeController_5: controllers.RegisCrimeController,
+    // @LINE:30
+    ImagesController_7: controllers.ImagesController
+  ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, ImagesController_7, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, prefix)
+    new Routes(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, ImagesController_7, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -67,12 +71,15 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/me""", """controllers.UserController.getCurrentUser()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """register""", """controllers.UserController.registerUser()"""),
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.UserController.signInUser()"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """logout""", """controllers.UserController.signOutUser()"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """logout""", """controllers.UserController.signOutUser(token:String)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users/""" + "$" + """name<[^/]+>""", """controllers.UserController.deleteUserByName(name:String)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createcard""", """controllers.CardController.createCard()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """allnews""", """controllers.CardController.getAllCards()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """registerCrime""", """controllers.RegisCrimeController.registerCrime()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """newsFeed""", """controllers.RegisCrimeController.getAllNews()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.uploadImage()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.downloadImage(id:String)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.deleteImage(id:String)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -229,12 +236,12 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("logout")))
   )
   private[this] lazy val controllers_UserController_signOutUser8_invoker = createInvoker(
-    UserController_4.signOutUser(),
+    UserController_4.signOutUser(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.UserController",
       "signOutUser",
-      Nil,
+      Seq(classOf[String]),
       "PUT",
       this.prefix + """logout""",
       """""",
@@ -332,6 +339,60 @@ class Routes(
     )
   )
 
+  // @LINE:30
+  private[this] lazy val controllers_ImagesController_uploadImage14_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images")))
+  )
+  private[this] lazy val controllers_ImagesController_uploadImage14_invoker = createInvoker(
+    ImagesController_7.uploadImage(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ImagesController",
+      "uploadImage",
+      Nil,
+      "POST",
+      this.prefix + """images""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:31
+  private[this] lazy val controllers_ImagesController_downloadImage15_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_ImagesController_downloadImage15_invoker = createInvoker(
+    ImagesController_7.downloadImage(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ImagesController",
+      "downloadImage",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """images/""" + "$" + """id<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:32
+  private[this] lazy val controllers_ImagesController_deleteImage16_route = Route("DELETE",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_ImagesController_deleteImage16_invoker = createInvoker(
+    ImagesController_7.deleteImage(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ImagesController",
+      "deleteImage",
+      Seq(classOf[String]),
+      "DELETE",
+      this.prefix + """images/""" + "$" + """id<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -385,8 +446,8 @@ class Routes(
   
     // @LINE:19
     case controllers_UserController_signOutUser8_route(params@_) =>
-      call { 
-        controllers_UserController_signOutUser8_invoker.call(UserController_4.signOutUser())
+      call(params.fromQuery[String]("token", None)) { (token) =>
+        controllers_UserController_signOutUser8_invoker.call(UserController_4.signOutUser(token))
       }
   
     // @LINE:20
@@ -417,6 +478,24 @@ class Routes(
     case controllers_RegisCrimeController_getAllNews13_route(params@_) =>
       call { 
         controllers_RegisCrimeController_getAllNews13_invoker.call(RegisCrimeController_5.getAllNews())
+      }
+  
+    // @LINE:30
+    case controllers_ImagesController_uploadImage14_route(params@_) =>
+      call { 
+        controllers_ImagesController_uploadImage14_invoker.call(ImagesController_7.uploadImage())
+      }
+  
+    // @LINE:31
+    case controllers_ImagesController_downloadImage15_route(params@_) =>
+      call(params.fromPath[String]("id", None)) { (id) =>
+        controllers_ImagesController_downloadImage15_invoker.call(ImagesController_7.downloadImage(id))
+      }
+  
+    // @LINE:32
+    case controllers_ImagesController_deleteImage16_route(params@_) =>
+      call(params.fromPath[String]("id", None)) { (id) =>
+        controllers_ImagesController_deleteImage16_invoker.call(ImagesController_7.deleteImage(id))
       }
   }
 }

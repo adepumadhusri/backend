@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
-// @DATE:Thu Feb 28 12:16:15 IST 2019
+// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
+// @DATE:Fri Mar 01 10:35:04 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -133,8 +133,8 @@ package controllers.javascript {
     def signOutUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.UserController.signOutUser",
       """
-        function() {
-          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "logout"})
+        function(token0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "logout" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("token", token0)])})
         }
       """
     )
@@ -215,6 +215,46 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "allnews"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:30
+  class ReverseImagesController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:31
+    def downloadImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ImagesController.downloadImage",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "images/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:32
+    def deleteImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ImagesController.deleteImage",
+      """
+        function(id0) {
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "images/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:30
+    def uploadImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ImagesController.uploadImage",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "images"})
         }
       """
     )

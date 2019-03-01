@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
-// @DATE:Thu Feb 28 12:16:15 IST 2019
+// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
+// @DATE:Fri Mar 01 10:35:04 IST 2019
 
 import play.api.mvc.Call
 
@@ -94,9 +94,9 @@ package controllers {
     }
   
     // @LINE:19
-    def signOutUser(): Call = {
+    def signOutUser(token:String): Call = {
       
-      Call("PUT", _prefix + { _defaultPrefix } + "logout")
+      Call("PUT", _prefix + { _defaultPrefix } + "logout" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("token", token)))))
     }
   
     // @LINE:15
@@ -154,6 +154,33 @@ package controllers {
     def getAllCards(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "allnews")
+    }
+  
+  }
+
+  // @LINE:30
+  class ReverseImagesController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:31
+    def downloadImage(id:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "images/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:32
+    def deleteImage(id:String): Call = {
+      
+      Call("DELETE", _prefix + { _defaultPrefix } + "images/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:30
+    def uploadImage(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "images")
     }
   
   }

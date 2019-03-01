@@ -16,7 +16,7 @@ GET /users                          controllers.UserController.getAllUsers()
 GET /users/me                       controllers.UserController.getCurrentUser()
 POST /register                        controllers.UserController.registerUser()
 PUT /login                   controllers.UserController.signInUser()
-PUT /logout                  controllers.UserController.signOutUser()
+PUT /logout                  controllers.UserController.signOutUser(token: String)
 DELETE /users/:name                 controllers.UserController.deleteUserByName(name : String)
 
 
@@ -26,3 +26,7 @@ GET /allnews                        controllers.CardController.getAllCards()
 
 POST /registerCrime                     controllers.RegisCrimeController.registerCrime()
 GET /newsFeed                        controllers.RegisCrimeController.getAllNews()
+
+POST /images             controllers.ImagesController.uploadImage()
+GET /images/:id          controllers.ImagesController.downloadImage(id: String)
+DELETE /images/:id       controllers.ImagesController.deleteImage(id: String)

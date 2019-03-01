@@ -3,9 +3,7 @@ import java.time.Clock;
 
 import daos.*;
 
-import services.ApplicationTimer;
-import services.AtomicCounter;
-import services.Counter;
+import services.*;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -32,6 +30,9 @@ public class Module extends AbstractModule {
        bind(UserDao.class).to(UserDaoImpl.class);
        bind(CardDao.class).to(CardDaoImpl.class);
        bind(RegisterCrimeDao.class).to(RegisterCrimeDaoImpl.class);
+       bind(ImageStore.class).to(ImageStoreImpl.class);
+
+
 
     }
 
