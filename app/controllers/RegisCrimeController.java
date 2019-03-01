@@ -65,6 +65,23 @@ public class RegisCrimeController extends Controller {
 
 
     }
+    @Transactional
+    public Result getRelavantCrimes(String crimetype) {
+
+        if (null == crimetype) {
+            return badRequest("name must be provided");
+        }
+        final Collection<RegisterCrime> crimes = RegisterCrimeDao.findRelavantCrimes(crimetype);
+//        if(restaurants.isPresent()) {
+//            final JsonNode result = Json.toJson(restaurants.get());
+//            return ok(result);
+//        } else {
+//            return notFound();
+//        }
+        final JsonNode result = Json.toJson(crimes);
+
+        return ok(result);
+    }
 
     @Transactional
     public Result getAll10() {
@@ -78,3 +95,4 @@ public class RegisCrimeController extends Controller {
 
     }
 }
+

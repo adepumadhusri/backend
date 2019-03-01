@@ -66,5 +66,13 @@ public class RegisterCrimeDaoImpl implements RegisterCrimeDao{
         return cards;
     }
 
+    @Override
+    public  Collection<RegisterCrime> findRelavantCrimes(String crimetype) {
+        TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT c FROM RegisterCrime c where crimetype LIKE '%"+crimetype+"%'", RegisterCrime.class);
+        List<RegisterCrime> cards= query.getResultList();
+
+        return cards;
+    }
+
 
 }
