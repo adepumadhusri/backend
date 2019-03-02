@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/srivani/Documents/backend/conf/routes
-// @DATE:Fri Mar 01 12:22:43 IST 2019
+// @DATE:Sat Mar 02 10:39:50 IST 2019
 
 package router
 
@@ -78,7 +78,7 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """registerCrime""", """controllers.RegisCrimeController.registerCrime()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """newsFeed""", """controllers.RegisCrimeController.getAllNews()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """viewmorebutton""", """controllers.RegisCrimeController.getAll10()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """crimedetails/""" + "$" + """crimetype<[^/]+>""", """controllers.RegisCrimeController.getRelavantCrimes(crimetype:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """crimedetails""", """controllers.RegisCrimeController.getRelavantCrimes(crimetype:String)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.uploadImage()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.downloadImage(id:String)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images/""" + "$" + """id<[^/]+>""", """controllers.ImagesController.deleteImage(id:String)"""),
@@ -361,7 +361,7 @@ class Routes(
 
   // @LINE:30
   private[this] lazy val controllers_RegisCrimeController_getRelavantCrimes15_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("crimedetails/"), DynamicPart("crimetype", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("crimedetails")))
   )
   private[this] lazy val controllers_RegisCrimeController_getRelavantCrimes15_invoker = createInvoker(
     RegisCrimeController_5.getRelavantCrimes(fakeValue[String]),
@@ -371,7 +371,7 @@ class Routes(
       "getRelavantCrimes",
       Seq(classOf[String]),
       "GET",
-      this.prefix + """crimedetails/""" + "$" + """crimetype<[^/]+>""",
+      this.prefix + """crimedetails""",
       """""",
       Seq()
     )
@@ -526,7 +526,7 @@ class Routes(
   
     // @LINE:30
     case controllers_RegisCrimeController_getRelavantCrimes15_route(params@_) =>
-      call(params.fromPath[String]("crimetype", None)) { (crimetype) =>
+      call(params.fromQuery[String]("crimetype", None)) { (crimetype) =>
         controllers_RegisCrimeController_getRelavantCrimes15_invoker.call(RegisCrimeController_5.getRelavantCrimes(crimetype))
       }
   

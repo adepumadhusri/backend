@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/srivani/Documents/backend/conf/routes
-// @DATE:Fri Mar 01 12:22:43 IST 2019
+// @DATE:Sat Mar 02 10:39:50 IST 2019
 
 package controllers;
 

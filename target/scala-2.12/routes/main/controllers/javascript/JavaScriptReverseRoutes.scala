@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/srivani/Documents/backend/conf/routes
-// @DATE:Fri Mar 01 12:22:43 IST 2019
+// @DATE:Sat Mar 02 10:39:50 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -44,7 +44,7 @@ package controllers.javascript {
       "controllers.RegisCrimeController.getRelavantCrimes",
       """
         function(crimetype0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "crimedetails/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("crimetype", crimetype0))})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "crimedetails" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("crimetype", crimetype0)])})
         }
       """
     )

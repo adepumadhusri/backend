@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/srivani/Documents/backend/conf/routes
-// @DATE:Fri Mar 01 12:22:43 IST 2019
+// @DATE:Sat Mar 02 10:39:50 IST 2019
 
 import play.api.mvc.Call
 
@@ -36,7 +36,7 @@ package controllers {
     // @LINE:30
     def getRelavantCrimes(crimetype:String): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "crimedetails/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("crimetype", crimetype)))
+      Call("GET", _prefix + { _defaultPrefix } + "crimedetails" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("crimetype", crimetype)))))
     }
   
     // @LINE:28
