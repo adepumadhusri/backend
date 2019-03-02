@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/srivani/Documents/backend/conf/routes
-// @DATE:Sat Mar 02 10:39:50 IST 2019
+// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
+// @DATE:Sat Mar 02 11:56:21 IST 2019
 
 package controllers;
 

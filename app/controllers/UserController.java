@@ -237,17 +237,17 @@ public class UserController extends Controller {
         }
 
 
-        final User user = userDao.findUserByAuthToken(Token);
+        final User user1 = userDao.findUserByAuthToken(Token);
         Logger.debug("user is present");
 
-        if (null == user) {
+        if (null == user1) {
             return unauthorized("Wrong username");
         }
         Logger.debug("user is  not  present");
 
-        user.setAccessToken(null);
+        user1.setAccessToken(null);
 
-        userDao.update(user);
+        userDao.update(user1);
 
         return ok();
 
