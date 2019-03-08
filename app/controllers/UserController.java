@@ -4,7 +4,8 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.io.BaseEncoding;
 import com.google.inject.Inject;
-//import controllers.security.Authenticator;
+import controllers.security.Authenticator;
+
 
 import daos.UserDao;
 import models.User;
@@ -226,7 +227,7 @@ public class UserController extends Controller {
 
 
 
-    //  @Authenticator
+   // @Authenticator
     @Transactional
     public Result signOutUser(String Token) {
 
@@ -250,6 +251,7 @@ public class UserController extends Controller {
         userDao.update(user1);
 
         return ok();
+
 
        /* final User user = (User) ctx().args.get("user");
 
@@ -293,8 +295,7 @@ public class UserController extends Controller {
     }
 
 
-    //  @Authenticator
-
+    @Authenticator
 
     @Transactional
 

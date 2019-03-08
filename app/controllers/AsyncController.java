@@ -4,8 +4,13 @@ import akka.actor.ActorSystem;
 import javax.inject.*;
 
 import akka.actor.Scheduler;
-import play.*;
+import controllers.security.IsAdminAction;
 import play.mvc.*;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.concurrent.Executor;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -62,4 +67,10 @@ public class AsyncController extends Controller {
         return future;
     }
 
+    @With(IsAdminAction.class)
+    @Target({ElementType.TYPE, ElementType.METHOD})
+    @Retention(RetentionPolicy.RUNTIME)
+
+    public static @interface IsAdmin {
+    }
 }
