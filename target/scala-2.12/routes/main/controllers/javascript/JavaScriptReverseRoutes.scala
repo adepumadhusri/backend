@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Thu Mar 07 15:06:38 IST 2019
+// @DATE:Fri Mar 08 10:39:05 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -254,7 +254,7 @@ package controllers.javascript {
       "controllers.ImagesController.downloadImage",
       """
         function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "images/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "images" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("id", id0)])})
         }
       """
     )
@@ -264,7 +264,7 @@ package controllers.javascript {
       "controllers.ImagesController.deleteImage",
       """
         function(id0) {
-          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "images/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "images" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("id", id0)])})
         }
       """
     )

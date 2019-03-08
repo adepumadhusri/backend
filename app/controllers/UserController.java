@@ -104,8 +104,18 @@ public class UserController extends Controller {
 
     private String generateSalt() {
 
-        String mySalt = RandomStringUtils.randomAlphabetic(10);
-        return mySalt;
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 3) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+      //  String mySalt = RandomStringUtils.randomAlphabetic(10);
+        //return mySalt;
 
     }
 

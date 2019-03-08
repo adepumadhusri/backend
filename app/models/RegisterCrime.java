@@ -4,6 +4,10 @@ package models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class RegisterCrime {
@@ -41,13 +45,14 @@ public class RegisterCrime {
     @JsonProperty("suspect")
     private  String Suspect;
 
+    @Basic
+    @JsonProperty("urls")
+    private String[] urls;
 
 
-    public RegisterCrime(){
 
-    }
 
-    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,Integer people,String description,String suspect){
+    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,Integer people,String description,String suspect,String[] urls){
 
 
         Id=id;
@@ -58,6 +63,11 @@ public class RegisterCrime {
         People=people;
         Description=description;
         Suspect=suspect;
+        this.urls = urls;
+    }
+
+    public RegisterCrime(){
+
     }
 
 
@@ -124,4 +134,11 @@ public class RegisterCrime {
     public void setId(Integer id) {
         Id = id;
     }
+
+    public String[] getUrls() {return urls;}
+
+    public void setUrls(String[] urls) { this.urls = urls; }
+
 }
+
+

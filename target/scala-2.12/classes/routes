@@ -30,5 +30,5 @@ GET /viewmorebutton                        controllers.RegisCrimeController.getA
 GET /crimedetails                     controllers.RegisCrimeController.getRelavantCrimes(crimetype: String)
 
 POST /images             controllers.ImagesController.uploadImage()
-GET /images/:id          controllers.ImagesController.downloadImage(id: String)
-DELETE /images/:id       controllers.ImagesController.deleteImage(id: String)
+GET /images         controllers.ImagesController.downloadImage(id: String)
+DELETE /images     controllers.ImagesController.deleteImage(id: String)

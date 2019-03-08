@@ -43,8 +43,8 @@ public class ImagesController extends Controller {
         final String downloadUrl = routes.ImagesController.downloadImage(imageId).absoluteURL(request());
 
         final ObjectNode result = Json.newObject();
-        result.put("image_url", downloadUrl);
-        //result.put("imageId", imageId);
+        // result.put("image_url", downloadUrl);
+        result.put("imageId", imageId);
 
         return ok(result);
     }
@@ -67,6 +67,7 @@ public class ImagesController extends Controller {
         }
 
         return ok();
+
     }
 
 }
