@@ -28,6 +28,11 @@ POST /registerCrime                     controllers.RegisCrimeController.registe
 GET /newsFeed                        controllers.RegisCrimeController.getAllNews()
 GET /viewmorebutton                        controllers.RegisCrimeController.getAll10()
 GET /crimedetails                     controllers.RegisCrimeController.getRelavantCrimes(crimetype: String)
+GET /graphDetails                        controllers.RegisCrimeController.getBarValues()
+GET /marqueeDetails                        controllers.RegisCrimeController.getHighestValues()
+
+
+
 
 POST /images             controllers.ImagesController.uploadImage()
 GET /images         controllers.ImagesController.downloadImage(id: String)

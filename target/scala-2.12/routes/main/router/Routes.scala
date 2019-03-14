@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Fri Mar 08 10:39:05 IST 2019
+// @SOURCE:/Users/PushpaSowjanya/Documents/crimes/backend/conf/routes
+// @DATE:Thu Mar 14 10:00:05 IST 2019
 
 package router
 
@@ -28,7 +28,7 @@ class Routes(
   CardController_1: controllers.CardController,
   // @LINE:27
   RegisCrimeController_5: controllers.RegisCrimeController,
-  // @LINE:32
+  // @LINE:37
   ImagesController_7: controllers.ImagesController,
   val prefix: String
 ) extends GeneratedRouter {
@@ -49,7 +49,7 @@ class Routes(
     CardController_1: controllers.CardController,
     // @LINE:27
     RegisCrimeController_5: controllers.RegisCrimeController,
-    // @LINE:32
+    // @LINE:37
     ImagesController_7: controllers.ImagesController
   ) = this(errorHandler, HomeController_2, CountController_0, AsyncController_3, Assets_6, UserController_4, CardController_1, RegisCrimeController_5, ImagesController_7, "/")
 
@@ -79,6 +79,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """newsFeed""", """controllers.RegisCrimeController.getAllNews()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """viewmorebutton""", """controllers.RegisCrimeController.getAll10()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """crimedetails""", """controllers.RegisCrimeController.getRelavantCrimes(crimetype:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """graphDetails""", """controllers.RegisCrimeController.getBarValues()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """marqueeDetails""", """controllers.RegisCrimeController.getHighestValues()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.uploadImage()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.downloadImage(id:String)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.deleteImage(id:String)"""),
@@ -377,11 +379,47 @@ class Routes(
     )
   )
 
+  // @LINE:31
+  private[this] lazy val controllers_RegisCrimeController_getBarValues16_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("graphDetails")))
+  )
+  private[this] lazy val controllers_RegisCrimeController_getBarValues16_invoker = createInvoker(
+    RegisCrimeController_5.getBarValues(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.RegisCrimeController",
+      "getBarValues",
+      Nil,
+      "GET",
+      this.prefix + """graphDetails""",
+      """""",
+      Seq()
+    )
+  )
+
   // @LINE:32
-  private[this] lazy val controllers_ImagesController_uploadImage16_route = Route("POST",
+  private[this] lazy val controllers_RegisCrimeController_getHighestValues17_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("marqueeDetails")))
+  )
+  private[this] lazy val controllers_RegisCrimeController_getHighestValues17_invoker = createInvoker(
+    RegisCrimeController_5.getHighestValues(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.RegisCrimeController",
+      "getHighestValues",
+      Nil,
+      "GET",
+      this.prefix + """marqueeDetails""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:37
+  private[this] lazy val controllers_ImagesController_uploadImage18_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images")))
   )
-  private[this] lazy val controllers_ImagesController_uploadImage16_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_uploadImage18_invoker = createInvoker(
     ImagesController_7.uploadImage(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -395,11 +433,11 @@ class Routes(
     )
   )
 
-  // @LINE:33
-  private[this] lazy val controllers_ImagesController_downloadImage17_route = Route("GET",
+  // @LINE:38
+  private[this] lazy val controllers_ImagesController_downloadImage19_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images")))
   )
-  private[this] lazy val controllers_ImagesController_downloadImage17_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_downloadImage19_invoker = createInvoker(
     ImagesController_7.downloadImage(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -413,11 +451,11 @@ class Routes(
     )
   )
 
-  // @LINE:34
-  private[this] lazy val controllers_ImagesController_deleteImage18_route = Route("DELETE",
+  // @LINE:39
+  private[this] lazy val controllers_ImagesController_deleteImage20_route = Route("DELETE",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("images")))
   )
-  private[this] lazy val controllers_ImagesController_deleteImage18_invoker = createInvoker(
+  private[this] lazy val controllers_ImagesController_deleteImage20_invoker = createInvoker(
     ImagesController_7.deleteImage(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -530,22 +568,34 @@ class Routes(
         controllers_RegisCrimeController_getRelavantCrimes15_invoker.call(RegisCrimeController_5.getRelavantCrimes(crimetype))
       }
   
-    // @LINE:32
-    case controllers_ImagesController_uploadImage16_route(params@_) =>
+    // @LINE:31
+    case controllers_RegisCrimeController_getBarValues16_route(params@_) =>
       call { 
-        controllers_ImagesController_uploadImage16_invoker.call(ImagesController_7.uploadImage())
+        controllers_RegisCrimeController_getBarValues16_invoker.call(RegisCrimeController_5.getBarValues())
       }
   
-    // @LINE:33
-    case controllers_ImagesController_downloadImage17_route(params@_) =>
-      call(params.fromQuery[String]("id", None)) { (id) =>
-        controllers_ImagesController_downloadImage17_invoker.call(ImagesController_7.downloadImage(id))
+    // @LINE:32
+    case controllers_RegisCrimeController_getHighestValues17_route(params@_) =>
+      call { 
+        controllers_RegisCrimeController_getHighestValues17_invoker.call(RegisCrimeController_5.getHighestValues())
       }
   
-    // @LINE:34
-    case controllers_ImagesController_deleteImage18_route(params@_) =>
+    // @LINE:37
+    case controllers_ImagesController_uploadImage18_route(params@_) =>
+      call { 
+        controllers_ImagesController_uploadImage18_invoker.call(ImagesController_7.uploadImage())
+      }
+  
+    // @LINE:38
+    case controllers_ImagesController_downloadImage19_route(params@_) =>
       call(params.fromQuery[String]("id", None)) { (id) =>
-        controllers_ImagesController_deleteImage18_invoker.call(ImagesController_7.deleteImage(id))
+        controllers_ImagesController_downloadImage19_invoker.call(ImagesController_7.downloadImage(id))
+      }
+  
+    // @LINE:39
+    case controllers_ImagesController_deleteImage20_route(params@_) =>
+      call(params.fromQuery[String]("id", None)) { (id) =>
+        controllers_ImagesController_deleteImage20_invoker.call(ImagesController_7.deleteImage(id))
       }
   }
 }

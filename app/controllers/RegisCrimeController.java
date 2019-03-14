@@ -12,6 +12,7 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.Map;
 
 public class RegisCrimeController extends Controller {
     private final static Logger.ALogger LOGGER = Logger.of(CardController .class);
@@ -94,5 +95,31 @@ public class RegisCrimeController extends Controller {
 
 
     }
+
+    @Transactional
+    public Result getBarValues() {
+
+        Map crime = RegisterCrimeDao.barValues();
+
+        final JsonNode result = Json.toJson(crime);
+
+        return ok(result);
+
+
+    }
+
+    @Transactional
+    public Result getHighestValues() {
+
+        String crime = RegisterCrimeDao.HighestValues();
+
+        final JsonNode result = Json.toJson(crime);
+
+        return ok(result);
+
+
+    }
+
+    
 }
 
