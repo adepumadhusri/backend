@@ -34,12 +34,16 @@ public class RegisterCrime {
     private String City;
 
     @Basic
-    @JsonProperty("people")
-    private Integer People;
+    @JsonProperty("latiVal")
+    private String LatiVal;
 
     @Basic
     @JsonProperty("description")
     private String Description;
+
+    @Basic
+    @JsonProperty("longiVal")
+    private  String LongiVal;
 
     @Basic
     @JsonProperty("suspect")
@@ -52,7 +56,7 @@ public class RegisterCrime {
 
 
 
-    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,Integer people,String description,String suspect,String[] urls){
+    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,String latival,String description,String longival,String suspect,String[] urls){
 
 
         Id=id;
@@ -60,7 +64,8 @@ public class RegisterCrime {
         Gender=gender;
         Age=age;
         City=city;
-        People=people;
+        LatiVal=latival;
+        LongiVal=longival;
         Description=description;
         Suspect=suspect;
         this.urls = urls;
@@ -103,12 +108,12 @@ public class RegisterCrime {
         this.City = city;
     }
 
-    public Integer getPeople() {
-        return People;
+    public String getLatiVal() {
+        return LatiVal;
     }
 
-    public void setPeople(Integer people) {
-        this.People = people;
+    public void setLatiVal(String latiVal) {
+        this.LatiVal = latiVal;
     }
 
     public String getDescription() {
@@ -125,6 +130,14 @@ public class RegisterCrime {
 
     public void setSuspect(String suspect) {
         this.Suspect = suspect;
+    }
+
+    public String getLongiVal() {
+        return LongiVal;
+    }
+
+    public void setLongiVal(String longiVal) {
+        this.LongiVal = longiVal;
     }
 
     public Integer getId() {
