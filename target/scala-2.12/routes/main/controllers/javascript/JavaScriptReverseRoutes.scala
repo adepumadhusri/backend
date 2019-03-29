@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/Madhu/Documents/crimes/backend/conf/routes
-// @DATE:Mon Mar 25 13:59:13 IST 2019
+// @DATE:Thu Mar 28 16:20:24 IST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -45,6 +45,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "graphDetails"})
+        }
+      """
+    )
+  
+    // @LINE:33
+    def getDetails: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.RegisCrimeController.getDetails",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "moredetails" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[Integer]].javascriptUnbind + """)("id", id0)])})
         }
       """
     )
@@ -261,7 +271,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:37
+  // @LINE:38
   class ReverseImagesController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -269,7 +279,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:38
+    // @LINE:39
     def downloadImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ImagesController.downloadImage",
       """
@@ -279,7 +289,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:39
+    // @LINE:40
     def deleteImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ImagesController.deleteImage",
       """
@@ -289,7 +299,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:37
+    // @LINE:38
     def uploadImage: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ImagesController.uploadImage",
       """

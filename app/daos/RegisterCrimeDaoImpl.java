@@ -101,6 +101,14 @@ public class RegisterCrimeDaoImpl implements RegisterCrimeDao{
 
     }*/
 
+    @Override
+    public  Collection<RegisterCrime> findDetails(Integer id) {
+        TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT c FROM RegisterCrime c where id ="+id+"", RegisterCrime.class);
+        List<RegisterCrime> cards= query.getResultList();
+
+        return cards;
+    }
+
     public  Map barValues() {
         CriteriaBuilder cb = jpaApi.em().getCriteriaBuilder();
         CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);

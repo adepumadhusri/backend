@@ -51,12 +51,12 @@ public class RegisterCrime {
 
     @Basic
     @JsonProperty("urls")
-    private String[] urls;
+    private String urls;
 
 
 
 
-    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,String latival,String description,String longival,String suspect,String[] urls){
+    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,String latival,String description,String longival,String suspect,String urls){
 
 
         Id=id;
@@ -148,9 +148,9 @@ public class RegisterCrime {
         Id = id;
     }
 
-    public String[] getUrls() {return urls;}
+    public String getUrls() {return urls;}
 
-    public void setUrls(String[] urls) { this.urls = urls; }
+    public void setUrls(String urls) { this.urls = urls; }
 
 }
 

@@ -32,8 +32,8 @@ public class ImagesController extends Controller {
             return badRequest("No file found");
         }
 
-        if (!image.getContentType().equals("image/png")) {
-            return badRequest("only PNG format supported");
+        if (!image.getContentType().equals("image/jpeg")) {
+            return badRequest("only JPEG format supported");
         }
 
         final Path source = image.getFile().toPath();

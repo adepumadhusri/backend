@@ -66,6 +66,20 @@ public class RegisCrimeController extends Controller {
 
 
     }
+
+    @Transactional
+    public Result getDetails(Integer id) {
+
+        if (null == id) {
+            return badRequest("id must be provided");
+        }
+        final Collection<RegisterCrime> crimes = RegisterCrimeDao.findDetails(id);
+//
+        final JsonNode result = Json.toJson(crimes);
+
+        return ok(result);
+    }
+
     @Transactional
     public Result getRelavantCrimes(String crimetype) {
 

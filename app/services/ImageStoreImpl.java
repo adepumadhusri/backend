@@ -13,7 +13,7 @@ import java.util.UUID;
 public class ImageStoreImpl implements ImageStore {
 
     private final static Logger.ALogger LOGGER = Logger.of(ImageStoreImpl.class);
-    private static final Path STORAGE_ROOT = Paths.get("/Users/ChinniPushpaSowjanya/Desktop/images/imagestore");
+    private static final Path STORAGE_ROOT = Paths.get("/Users/PolepalleChennaHaritha/Desktop/images/imagestore");
 
     public ImageStoreImpl() {
 
@@ -33,7 +33,7 @@ public class ImageStoreImpl implements ImageStore {
     public String save(Path source) {
 
         final String imageId = generateImageId();
-        final Path destination = STORAGE_ROOT.resolve(imageId + ".png");
+        final Path destination = STORAGE_ROOT.resolve(imageId + ".jpeg");
 
         LOGGER.debug("Source: {} Destination: {}", source, destination);
 
@@ -56,7 +56,7 @@ public class ImageStoreImpl implements ImageStore {
     @Override
     public File getImageById(String id) {
 
-        final File file = STORAGE_ROOT.resolve(id + ".png").toFile();
+        final File file = STORAGE_ROOT.resolve(id + ".jpeg").toFile();
         if (!file.isFile()) {
             return null;
         }
@@ -68,7 +68,7 @@ public class ImageStoreImpl implements ImageStore {
     @Override
     public boolean deleteImageById(String id) {
 
-        final File file = STORAGE_ROOT.resolve(id + ".png").toFile();
+        final File file = STORAGE_ROOT.resolve(id + ".jpeg").toFile();
         if (!file.isFile()) {
             return false;
         }
