@@ -53,10 +53,19 @@ public class RegisterCrime {
     @JsonProperty("urls")
     private String urls;
 
+    @Basic
+    @JsonProperty("info")
+    private String Info;
+
+    @Basic
+    @JsonProperty("heading")
+    private String Heading;
 
 
 
-    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,String latival,String description,String longival,String suspect,String urls){
+
+
+    public RegisterCrime(Integer id,String crimetype,String gender,Integer age,String city,String latival,String description,String longival,String suspect,String urls,String info,String heading){
 
 
         Id=id;
@@ -69,6 +78,9 @@ public class RegisterCrime {
         Description=description;
         Suspect=suspect;
         this.urls = urls;
+        Info=info;
+        Heading=heading;
+
     }
 
     public RegisterCrime(){
@@ -151,6 +163,24 @@ public class RegisterCrime {
     public String getUrls() {return urls;}
 
     public void setUrls(String urls) { this.urls = urls; }
+
+    public String getInfo() {
+        return Info;
+    }
+
+    public void setInfo(String Info) {
+        this.Info = Info;
+    }
+
+    public String getHeading() {
+        return Heading;
+    }
+
+    public void setHeading(String Heading) {
+        this.Heading=Heading;
+    }
+
+
 
 }
 
