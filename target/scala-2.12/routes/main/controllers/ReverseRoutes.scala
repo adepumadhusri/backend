@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Fri Mar 29 10:51:26 IST 2019
+// @DATE:Wed Apr 10 11:07:06 IST 2019
 
 import play.api.mvc.Call
 
@@ -42,7 +42,7 @@ package controllers {
     // @LINE:33
     def getDetails(id:Integer): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "moredetails" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[Integer]].unbind("id", id)))))
+      Call("GET", _prefix + { _defaultPrefix } + "moredetails/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
     }
   
     // @LINE:29

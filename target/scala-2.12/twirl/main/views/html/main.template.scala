@@ -66,7 +66,7 @@ Seq[Any](format.raw/*8.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 29 10:51:27 IST 2019
+                  DATE: Wed Apr 10 11:07:07 IST 2019
                   SOURCE: /Users/polepallechennaharitha/Documents/crimes/backend/app/views/main.scala.html
                   HASH: 6ea0cc6fffc14ad60386de863a153b880fcdcbb3
                   MATRIX: 1206->260|1330->291|1357->292|1437->397|1473->406|1508->414|1534->419|1623->481|1638->487|1701->528|1789->589|1804->595|1865->634|1917->659|1932->665|1994->706|2088->862|2125->872|2153->879|2185->884

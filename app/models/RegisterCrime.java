@@ -168,16 +168,16 @@ public class RegisterCrime {
         return Info;
     }
 
-    public void setInfo(String Info) {
-        this.Info = Info;
+    public void setInfo(String info) {
+        this.Info = info;
     }
 
     public String getHeading() {
         return Heading;
     }
 
-    public void setHeading(String Heading) {
-        this.Heading=Heading;
+    public void setHeading(String heading) {
+        this.Heading=heading;
     }
 
 

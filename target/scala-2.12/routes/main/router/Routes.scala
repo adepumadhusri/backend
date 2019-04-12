@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/polepallechennaharitha/Documents/crimes/backend/conf/routes
-// @DATE:Fri Mar 29 10:51:26 IST 2019
+// @DATE:Wed Apr 10 11:07:06 IST 2019
 
 package router
 
@@ -81,7 +81,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """crimedetails""", """controllers.RegisCrimeController.getRelavantCrimes(crimetype:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """graphDetails""", """controllers.RegisCrimeController.getBarValues()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """marqueeDetails""", """controllers.RegisCrimeController.getHighestValues()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """moredetails""", """controllers.RegisCrimeController.getDetails(id:Integer)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """moredetails/""" + "$" + """id<[^/]+>""", """controllers.RegisCrimeController.getDetails(id:Integer)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.uploadImage()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.downloadImage(id:String)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """images""", """controllers.ImagesController.deleteImage(id:String)"""),
@@ -418,7 +418,7 @@ class Routes(
 
   // @LINE:33
   private[this] lazy val controllers_RegisCrimeController_getDetails18_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("moredetails")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("moredetails/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_RegisCrimeController_getDetails18_invoker = createInvoker(
     RegisCrimeController_5.getDetails(fakeValue[Integer]),
@@ -428,7 +428,7 @@ class Routes(
       "getDetails",
       Seq(classOf[Integer]),
       "GET",
-      this.prefix + """moredetails""",
+      this.prefix + """moredetails/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
@@ -601,7 +601,7 @@ class Routes(
   
     // @LINE:33
     case controllers_RegisCrimeController_getDetails18_route(params@_) =>
-      call(params.fromQuery[Integer]("id", None)) { (id) =>
+      call(params.fromPath[Integer]("id", None)) { (id) =>
         controllers_RegisCrimeController_getDetails18_invoker.call(RegisCrimeController_5.getDetails(id))
       }
   

@@ -30,7 +30,7 @@ GET /viewmorebutton                        controllers.RegisCrimeController.getA
 GET /crimedetails                     controllers.RegisCrimeController.getRelavantCrimes(crimetype: String)
 GET /graphDetails                        controllers.RegisCrimeController.getBarValues()
 GET /marqueeDetails                        controllers.RegisCrimeController.getHighestValues()
-GET /moredetails                        controllers.RegisCrimeController.getDetails(id: Integer)
+GET /moredetails/:id                       controllers.RegisCrimeController.getDetails(id: Integer)
 
 
 

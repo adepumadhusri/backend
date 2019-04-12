@@ -53,7 +53,7 @@ public class RegisterCrimeDaoImpl implements RegisterCrimeDao{
     @Override
     public Collection<RegisterCrime> all() {
         TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT  c FROM  RegisterCrime c ORDER BY id desc ", RegisterCrime .class);
-        query.setMaxResults(3);
+        query.setMaxResults(5);
         List<RegisterCrime> card= query.getResultList();
 
         return card;
@@ -70,7 +70,7 @@ public class RegisterCrimeDaoImpl implements RegisterCrimeDao{
 
     @Override
     public  Collection<RegisterCrime> findRelavantCrimes(String crimetype) {
-        TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT c FROM RegisterCrime c where crimetype LIKE '%"+crimetype+"%'", RegisterCrime.class);
+        TypedQuery<RegisterCrime> query = jpaApi.em().createQuery("SELECT c FROM RegisterCrime c where crimetype LIKE '%"+crimetype+"%' ORDER BY id desc ", RegisterCrime.class);
         List<RegisterCrime> cards= query.getResultList();
 
         return cards;
